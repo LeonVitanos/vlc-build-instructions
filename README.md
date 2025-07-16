@@ -100,14 +100,18 @@ cd build-qt11
 make -j4
 ```  
 
-**Setup Qt Creator**
+**Configure Qt Creator Project**
 --------------------
 
 *   Open Qt Creator
     
 *   File -> New Project -> Import existing project -> Change 'Location' to {YOUR\_HOME}/vlc
     
-    *   It might be a good idea to not include the 'contrib' and 'extras' folder as you don't need QtCreator to index them
+    *   In 'File Selection' page it might be a good idea to:
+
+        *   Add *.qml; to the files matching selection
+     
+        *   Not include the 'contrib', 'extras' and 'build-qt11' folder as you don't need QtCreator to index them
         
 *   Go to the 'Projects' page
     
