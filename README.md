@@ -8,7 +8,7 @@ Tested on Ubuntu 22.04 & 25.04
 
 *   Required for running Qt installation file:
     
-    *   sudo apt install libxcb-xinerama0
+    *   Ubuntu 22.04: sudo apt install libxcb-xinerama0
         
     *   Ubuntu 25.04: sudo apt install libxcb-cursor0 libxcb-cursor-dev
         
