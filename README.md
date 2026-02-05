@@ -112,6 +112,7 @@ make -j4
         *   Add *.qml; to the files matching selection
      
         *   Not include the 'contrib', 'extras' and 'build-qt11' folder as you don't need QtCreator to index them
+    *   Click Next -> Finish
         
 *   Go to the 'Projects' page
     
