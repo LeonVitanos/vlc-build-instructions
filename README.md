@@ -105,7 +105,7 @@ make -j4
 
 *   Open Qt Creator
     
-*   File -> New Project -> Import existing project -> Change 'Location' to {YOUR\_HOME}/vlc
+*   File -> New Project -> Import project -> Import existing project -> Change 'Location' to {YOUR\_HOME}/vlc
     
     *   In 'File Selection' page it might be a good idea to:
 
