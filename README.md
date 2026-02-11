@@ -8,9 +8,9 @@ Tested on Ubuntu 22.04 & 25.04
 
 *   Required for running Qt installation file:
     
-    *   Ubuntu 22.04: sudo apt install libxcb-xinerama0
-        
-    *   Ubuntu 25.04: sudo apt install libxcb-cursor0 libxcb-cursor-dev
+    *   Ubuntu 22.04: `sudo apt install libxcb-xinerama0`
+    *   Ubuntu 25.04: `sudo apt install libxcb-cursor0 libxcb-cursor-dev`
+    *   Ubuntu 26.04: `sudo apt install libxcb-cursor0 libxcb-cursor-dev libxkbcommon-x11-0 libxcb-cursor0 libxcb-icccm4 libxcb-image0 libxcb-keysyms1 libxcb-render-util0`
         
 *   Download Qt online installer: [https://download.qt.io/official\_releases/online\_installers/](https://download.qt.io/official_releases/online_installers/)
     
@@ -28,13 +28,13 @@ Tested on Ubuntu 22.04 & 25.04
             
 *   Make sure the prefix of the files in home/leon/Qt/6.x/gcc\_64/lib/pkgconfig/ are correct:
     
-    *   sed -i -e "s#prefix=/home/qt/work/install#prefix=/home/leon/Qt/6.8.0/gcc\_64#" /home/leon/Qt/6.8.0/gcc\_64/lib/pkgconfig/\*.pc
+    *   `sed -i -e "s#prefix=/home/qt/work/install#prefix=/home/leon/Qt/6.8.0/gcc\_64#" /home/leon/Qt/6.8.0/gcc\_64/lib/pkgconfig/\*.pc`
         
 *   Set Qt environment variables
     
-    *   export LD\_LIBRARY\_PATH=$LD\_LIBRARY\_PATH:/home/leon/Qt/6.x/gcc\_64/lib
+    *   `export LD\_LIBRARY\_PATH=$LD\_LIBRARY\_PATH:/home/leon/Qt/6.x/gcc\_64/lib`
         
-    *   export PATH=$PATH:/home/leon/Qt/6.x/gcc\_64/bin
+    *   `export PATH=$PATH:/home/leon/Qt/6.x/gcc\_64/bin`
 
 ## Install Required Packages
 
