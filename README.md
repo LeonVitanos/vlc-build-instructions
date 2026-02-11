@@ -1,7 +1,7 @@
 **Configure and build VLC from scratch**
 ========================================
 
-Tested on Ubuntu 22.04 & 25.04
+Tested on Ubuntu 22.04 & 25.04 & 26.04
 
 **Qt**
 ------
@@ -40,7 +40,7 @@ Tested on Ubuntu 22.04 & 25.04
 
 ```bash
 sudo apt install git build-essential pkg-config libtool automake autopoint gettext
-sudo apt install cmake yasm python3-venv # Required for building 'contrib'
+sudo apt install cmake yasm nasm python3-venv # Required for building 'contrib'
 sudo apt install libxcb-xkb-dev libxcb-damage0-dev # Required for building 'vlc'
 sudo apt-get install qml-module-qtgraphicaleffects qml-module-qtqml-models2 qml-module-qtquick-controls2 qml-module-qtquick-layouts qml-module-qtquick-templates2 # Required for running 'vlc'
 ```
@@ -96,7 +96,7 @@ cd ../..
 ./bootstrap
 mkdir build-qt11
 cd build-qt11
-../configure '--disable-optimizations' '--enable-debug' '--disable-nls' '--without-kde-solid' '--enable-qt-qml-cache' '--enable-qt-qml-debug' '--disable-skins2' '--disable-upnp' '--disable-chromecast' '--disable-srt' '--disable-aom' '--disable-bluray' 'CFLAGS=-ggdb -O0 -fno-omit-frame-pointer' 'PKG\_CONFIG\_PATH=/home/leon/Qt/6.8.0/gcc\_64/lib/pkgconfig/:/home/leon/vlc/contrib/x86\_64-linux-gnu/lib/pkgconfig/'
+../configure --disable-optimizations --enable-debug --disable-nls --without-kde-solid --enable-qt-qml-cache --enable-qt-qml-debug --disable-skins2 --disable-upnp --disable-chromecast --disable-srt --disable-aom --disable-bluray CFLAGS="-ggdb -O0 -fno-omit-frame-pointer" PKG_CONFIG_PATH="/home/leon/Qt/6.8.0/gcc_64/lib/pkgconfig/:/home/leon/vlc/contrib/x86_64-linux-gnu/lib/pkgconfig/"
 make -j4
 ```  
 
