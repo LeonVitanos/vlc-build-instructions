@@ -1,7 +1,7 @@
 **Configure and build VLC from scratch**
 ========================================
 
-Tested on Ubuntu 22.04 & 25.04 & 26.04
+Tested on Ubuntu 22.04 & 24.04 & 26.04
 
 **Qt**
 ------
@@ -9,7 +9,7 @@ Tested on Ubuntu 22.04 & 25.04 & 26.04
 *   Required for running Qt installation file:
     
     *   Ubuntu 22.04: `sudo apt install libxcb-xinerama0`
-    *   Ubuntu 25.04: `sudo apt install libxcb-cursor0 libxcb-cursor-dev`
+    *   Ubuntu 24.04: `sudo apt install libxcb-cursor0 libxcb-cursor-dev`
     *   Ubuntu 26.04: `sudo apt install libxcb-cursor0 libxcb-cursor-dev libxkbcommon-x11-0 libxcb-cursor0 libxcb-icccm4 libxcb-image0 libxcb-keysyms1 libxcb-render-util0`
         
 *   Download Qt online installer: [https://download.qt.io/official\_releases/online\_installers/](https://download.qt.io/official_releases/online_installers/)
