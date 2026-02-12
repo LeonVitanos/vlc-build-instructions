@@ -26,15 +26,18 @@ Tested on Ubuntu 22.04 & 24.04 & 26.04
         
         *   where x is the current latest version supported to run vlc
             
-*   Make sure the prefix of the files in home/leon/Qt/6.x/gcc\_64/lib/pkgconfig/ are correct:
-    
-    *   `sed -i -e "s#prefix=/home/qt/work/install#prefix=/home/leon/Qt/6.8.0/gcc\_64#" /home/leon/Qt/6.8.0/gcc\_64/lib/pkgconfig/\*.pc`
+*   Define the Qt Version you installed (so that you can copy paste all the commands that follow)
+    *   For example, run `QT_VER="6.10.2"`
+*   Optional: Make sure the prefix of the files in `$HOME/Qt/$QT_VER/gcc\_64/lib/pkgconfig/` are correct:
+```bash
+sed -i -e "s#prefix=/home/qt/work/install#prefix=$HOME/Qt/$QT_VER/gcc_64#" $HOME/Qt/$QT_VER/gcc_64/lib/pkgconfig/*.pc
+```
         
 *   Set Qt environment variables
-    
-    *   `export LD\_LIBRARY\_PATH=$LD\_LIBRARY\_PATH:/home/leon/Qt/6.x/gcc\_64/lib`
-        
-    *   `export PATH=$PATH:/home/leon/Qt/6.x/gcc\_64/bin`
+```bash
+export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:$HOME/Qt/$QT_VER/gcc_64/lib
+export PATH=$PATH:$HOME/Qt/$QT_VER/gcc_64/bin
+```
 
 ## Install Required Packages
 
@@ -54,21 +57,20 @@ sudo apt install python-fontforge # NOTE: This is required for generating 'vlc' 
 **Clone VLC**
 -------------
 
-*   Optional:
+*   `git clone https://code.videolan.org/videolan/vlc`
     
-    *   fork https://code.videolan.org/videolan/vlc
+    *  Optional: To create your own fork `fork https://code.videolan.org/videolan/vlc`
+        * `git clone https://code.videolan.org/{YOUR\_FORK}/vlc`
         
-*   Connecting to GitLab with SSH
+*   Optional: Connecting to GitLab with SSH
     
-    *   Generate rsa: ssh-keygen -t rsa -b 2048 -C "{YOUR\_EMAIL}"
+    *   Generate rsa: `ssh-keygen -t rsa -b 2048 -C "{YOUR\_EMAIL}"`
         
-    *   Upload {YOUR\_HOME}/.ssh/id\_rsa.pub to code.videolan.org
+    *   Upload `{YOUR\_HOME}/.ssh/id\_rsa.pub` to code.videolan.org
         
     *   For more information read: https://docs.github.com/en/authentication/connecting-to-github-with-ssh
         
-*   git clone https://code.videolan.org/videolan/vlc
-    
-    *   or in case you forked: git clone https://code.videolan.org/{YOUR\_FORK}/vlc
+
         
 
 **Build VLC tools**
@@ -96,7 +98,12 @@ cd ../..
 ./bootstrap
 mkdir build-qt11
 cd build-qt11
-../configure --disable-optimizations --enable-debug --disable-nls --without-kde-solid --enable-qt-qml-cache --enable-qt-qml-debug --disable-skins2 --disable-upnp --disable-chromecast --disable-srt --disable-aom --disable-bluray CFLAGS="-ggdb -O0 -fno-omit-frame-pointer" PKG_CONFIG_PATH="/home/leon/Qt/6.8.0/gcc_64/lib/pkgconfig/:/home/leon/vlc/contrib/x86_64-linux-gnu/lib/pkgconfig/"
+../configure --disable-optimizations --enable-debug --disable-nls \
+--without-kde-solid --enable-qt-qml-cache --enable-qt-qml-debug \
+--disable-skins2 --disable-upnp --disable-chromecast --disable-srt \
+--disable-aom --disable-bluray \
+CFLAGS="-ggdb -O0 -fno-omit-frame-pointer" \
+PKG_CONFIG_PATH="$QT_DIR/lib/pkgconfig/:$HOME/vlc/contrib/x86_64-linux-gnu/lib/pkgconfig/"
 make -j4
 ```  
 
@@ -111,12 +118,12 @@ make -j4
 
         *   Add *.qml; to the files matching selection
      
-        *   Not include the 'contrib', 'extras' and 'build-qt11' folder as you don't need QtCreator to index them
+        *   Not include the `contrib`, `extras` and `build-qt11` folder as you don't need QtCreator to index them
     *   Click Next -> Finish
         
 *   Go to the 'Projects' page
     
-    *   Make sure the build environment is the Qt version you want to build with (e.g Desktop 6.9.1)
+    *   Make sure the build environment is the Qt version you want to build with (e.g Desktop 6.10.2)
         
     *   On the 'Build' page, change the build directory to {YOUR\_HOME}/vlc/build-qt11
         
