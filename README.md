@@ -45,12 +45,12 @@ export PATH=$PATH:$HOME/Qt/$QT_VER/gcc_64/bin
 sudo apt install git build-essential pkg-config libtool automake autopoint gettext
 sudo apt install cmake yasm nasm python3-venv # Required for building 'contrib'
 sudo apt install libxcb-xkb-dev libxcb-damage0-dev # Required for building 'vlc'
-sudo apt-get install qml-module-qtgraphicaleffects qml-module-qtqml-models2 qml-module-qtquick-controls2 qml-module-qtquick-layouts qml-module-qtquick-templates2 # Required for running 'vlc'
+sudo apt install qml-module-qtgraphicaleffects qml-module-qtqml-models2 qml-module-qtquick-controls2 qml-module-qtquick-layouts qml-module-qtquick-templates2 # Required for running 'vlc'
 ```
 
 Enable sources on Ubuntu (https://askubuntu.com/questions/496549/error-you-must-put-some-source-uris-in-your-sources-list)
 ```bash
-sudo apt-get build-dep vlc
+sudo apt install build-dep vlc
 sudo apt install python-fontforge # NOTE: This is required for generating 'vlc' icons font.
 ```
 
