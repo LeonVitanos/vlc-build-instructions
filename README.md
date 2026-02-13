@@ -8,9 +8,9 @@ Tested on Ubuntu 22.04 & 24.04 & 26.04
 
 *   Required for running Qt installation file:
     
-    *   Ubuntu 22.04: `sudo apt install libxcb-xinerama0`
-    *   Ubuntu 24.04: `sudo apt install libxcb-cursor0 libxcb-cursor-dev`
-    *   Ubuntu 26.04: `sudo apt install libxcb-cursor0 libxcb-cursor-dev libxkbcommon-x11-0 libxcb-cursor0 libxcb-icccm4 libxcb-image0 libxcb-keysyms1 libxcb-render-util0`
+    *   `sudo apt install libxcb-cursor0 libxcb-cursor-dev`
+    *   If the installer fails to launch with a "platform plugin" error: `sudo apt install libxcb-xinerama0`
+    *   On Ubuntu 26.04 you also need: `sudo apt install libxkbcommon-x11-0 libxcb-cursor0 libxcb-icccm4 libxcb-image0 libxcb-keysyms1 libxcb-render-util0`
         
 *   Download Qt online installer: [https://download.qt.io/official\_releases/online\_installers/](https://download.qt.io/official_releases/online_installers/)
     
@@ -50,7 +50,7 @@ sudo apt install qml-module-qtgraphicaleffects qml-module-qtqml-models2 qml-modu
 
 Enable sources on Ubuntu (https://askubuntu.com/questions/496549/error-you-must-put-some-source-uris-in-your-sources-list)
 ```bash
-sudo apt install build-dep vlc
+sudo apt-get build-dep vlc
 sudo apt install python-fontforge # NOTE: This is required for generating 'vlc' icons font.
 ```
 
