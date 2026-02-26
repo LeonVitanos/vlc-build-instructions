@@ -28,7 +28,7 @@ Tested on Ubuntu 22.04 & 24.04 & 26.04
             
 *   Define the Qt Version you installed (so that you can copy paste all the commands that follow)
     *   For example, run `QT_VER="6.10.2"`
-*   Optional: Make sure the prefix of the files in `$HOME/Qt/$QT_VER/gcc\_64/lib/pkgconfig/` are correct:
+*   Optional: Make sure the prefix of the files in `$HOME/Qt/$QT_VER/gcc_64/lib/pkgconfig/` are pointing at `$HOME/Qt/$QT_VER/gcc_64`:
 ```bash
 sed -i -e "s#prefix=/home/qt/work/install#prefix=$HOME/Qt/$QT_VER/gcc_64#" $HOME/Qt/$QT_VER/gcc_64/lib/pkgconfig/*.pc
 ```
@@ -42,8 +42,8 @@ export PATH=$PATH:$HOME/Qt/$QT_VER/gcc_64/bin
 ## Install Required Packages
 
 ```bash
-sudo apt install git build-essential pkg-config libtool automake autopoint gettext
-sudo apt install cmake yasm nasm python3-venv # Required for building 'contrib'
+sudo apt install git build-essential
+sudo apt install yasm nasm python3-venv # Required for building 'contrib'
 sudo apt install libxcb-xkb-dev libxcb-damage0-dev libxkbcommon-x11-dev # Required for building 'vlc'
 sudo apt install qml-module-qtgraphicaleffects qml-module-qtqml-models2 qml-module-qtquick-controls2 qml-module-qtquick-layouts qml-module-qtquick-templates2 # Required for running 'vlc'
 ```
@@ -103,7 +103,7 @@ cd build-qt11
 --disable-skins2 --disable-upnp --disable-chromecast --disable-srt \
 --disable-aom --disable-bluray \
 CFLAGS="-ggdb -O0 -fno-omit-frame-pointer" \
-PKG_CONFIG_PATH="$QT_DIR/lib/pkgconfig/:$HOME/vlc/contrib/x86_64-linux-gnu/lib/pkgconfig/"
+PKG_CONFIG_PATH="$HOME/Qt/$QT_VER/gcc_64/lib/pkgconfig/:$HOME/vlc/contrib/x86_64-linux-gnu/lib/pkgconfig/"
 make -j4
 ```  
 
