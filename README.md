@@ -18,11 +18,7 @@ Tested on Ubuntu 22.04 & 24.04 & 26.04
         
     *   Select custom installation
         
-    *   Click filter -> 'Archives'
-        
-    *   Select to install for 5.15.2 
-        
-    *   Select to install for 6.x the desktop gcc 64-bit, Qt Shader Tools and Qt5 Compatibility mode
+    *   Select to install for 6.x the desktop gcc 64-bit and Qt Shader Tools
         
         *   where x is the current latest version supported to run vlc
             
