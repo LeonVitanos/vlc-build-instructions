@@ -18,9 +18,9 @@ Tested on Ubuntu 22.04 & 24.04 & 26.04
         
     *   Select custom installation
         
-    *   Select to install for 6.x the desktop gcc 64-bit and Qt Shader Tools
+    *   Select to install for 6.x: the desktop gcc 64-bit and Qt Shader Tools
         
-        *   where x is the current latest version supported to run vlc
+        *   the minimum supported version is 6.2.4
             
 *   Define the Qt Version you installed (so that you can copy paste all the commands that follow)
     *   For example, run `QT_VER="6.10.2"`
