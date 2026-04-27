@@ -17,13 +17,16 @@ Tested on Ubuntu 22.04 & 24.04 & 26.04
     *   Sign up/Login to your Qt account
     *   Select custom installation
         
-    *   Select to install for 6.x: the **Desktop** and **Qt Shader Tools**
-        
-        *   the minimum supported version is 6.2.4
+    *   Select to install for 6.x:
+         *   Developer Tools -> Qt Creator -> **Qt Creator**
+         *   Qt for developement -> Qt -> the **Desktop** and **Qt Shader Tools**
+         *   the minimum supported version is 6.2.4
             
 *   Define the Qt Version you installed (so that you can copy paste all the commands that follow)
     *   For example, run `QT_VER="6.11.0"`
-*   Optional: Make sure the prefix of the files in `$HOME/Qt/$QT_VER/gcc_64/lib/pkgconfig/` are pointing at `$HOME/Qt/$QT_VER/gcc_64`:
+*   Verify and Fix Library Paths:
+    * `grep "^prefix=" $HOME/Qt/$QT_VER/gcc_64/lib/pkgconfig/Qt6Core.pc`
+    * If it is `/home/qt/work/install` run: 
 ```bash
 sed -i -e "s#prefix=/home/qt/work/install#prefix=$HOME/Qt/$QT_VER/gcc_64#" $HOME/Qt/$QT_VER/gcc_64/lib/pkgconfig/*.pc
 ```
