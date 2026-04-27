@@ -11,7 +11,7 @@ Tested on Ubuntu 22.04 & 24.04 & 26.04
     *   To be able to run the setup file, you will need to:
         *    Right click it -> Properties -> Permissions -> Enable **Allow executing file as a program**
         *   `sudo apt install libxcb-cursor0 libxcb-cursor-dev`
-        *   On **Ubuntu 26.04** you also need: `sudo apt install libxkbcommon-x11-0 libxcb-cursor0 libxcb-icccm4 libxcb-image0 libxcb-keysyms1 libxcb-render-util0`
+        *   On **Ubuntu 26.04** you also need: `sudo apt install libxkbcommon-x11-0 libxcb-icccm4 libxcb-image0 libxcb-keysyms1 libxcb-render-util0`
         *   If the installer fails to launch with a "platform plugin" error: `sudo apt install libxcb-xinerama0`  
         
     *   Sign up/Login to your Qt account
@@ -39,15 +39,7 @@ export PATH=$PATH:$HOME/Qt/$QT_VER/gcc_64/bin
 
 ## Install Required Packages
 
-Install packages required for building
-
-```bash
-sudo apt install git build-essential
-sudo apt install yasm nasm python3-venv # Required for building 'contrib'
-sudo apt install libxcb-xkb-dev libxcb-damage0-dev libxkbcommon-x11-dev # Required for building 'vlc'
-```
-
-Enable source repositories
+First, enable source repositories:
 ```bash
 # Ubuntu 24.04/26.04:
 sudo sed -i 's/^Types: deb/Types: deb deb-src/' /etc/apt/sources.list.d/ubuntu.sources
@@ -55,11 +47,19 @@ sudo sed -i 's/^Types: deb/Types: deb deb-src/' /etc/apt/sources.list.d/ubuntu.s
 sudo sed -i 's/^#\s*deb-src/deb-src/' /etc/apt/sources.list
 ```
 
-Install dependencies
+Install vlc dependencies
 
 ```bash
 sudo apt update
-sudo apt-get build-dep vlc
+sudo apt build-dep vlc
+```
+
+Install packages required for building
+
+```bash
+sudo apt install git build-essential
+sudo apt install yasm nasm python3-venv # Required for building 'contrib'
+sudo apt install libxcb-xkb-dev libxcb-damage0-dev libxkbcommon-x11-dev # Required for building 'vlc'
 ```
 
 **Clone VLC**
