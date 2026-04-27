@@ -45,7 +45,6 @@ Install packages required for building
 sudo apt install git build-essential
 sudo apt install yasm nasm python3-venv # Required for building 'contrib'
 sudo apt install libxcb-xkb-dev libxcb-damage0-dev libxkbcommon-x11-dev # Required for building 'vlc'
-sudo apt install qml-module-qtgraphicaleffects qml-module-qtqml-models2 qml-module-qtquick-controls2 qml-module-qtquick-layouts qml-module-qtquick-templates2 # Required for running 'vlc'
 ```
 
 Enable source repositories
