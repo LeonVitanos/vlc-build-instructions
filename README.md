@@ -39,6 +39,8 @@ export PATH=$PATH:$HOME/Qt/$QT_VER/gcc_64/bin
 
 ## Install Required Packages
 
+Install packages required for building
+
 ```bash
 sudo apt install git build-essential
 sudo apt install yasm nasm python3-venv # Required for building 'contrib'
@@ -46,10 +48,19 @@ sudo apt install libxcb-xkb-dev libxcb-damage0-dev libxkbcommon-x11-dev # Requir
 sudo apt install qml-module-qtgraphicaleffects qml-module-qtqml-models2 qml-module-qtquick-controls2 qml-module-qtquick-layouts qml-module-qtquick-templates2 # Required for running 'vlc'
 ```
 
-Enable sources on Ubuntu (https://askubuntu.com/questions/496549/error-you-must-put-some-source-uris-in-your-sources-list)
+Enable source repositories
 ```bash
+# Ubuntu 24.04/26.04:
+sudo sed -i 's/^Types: deb/Types: deb deb-src/' /etc/apt/sources.list.d/ubuntu.sources
+# Ubuntu 22.04
+sudo sed -i 's/^#\s*deb-src/deb-src/' /etc/apt/sources.list
+```
+
+Install dependencies
+
+```bash
+sudo apt update
 sudo apt-get build-dep vlc
-sudo apt install python-fontforge # NOTE: This is required for generating 'vlc' icons font.
 ```
 
 **Clone VLC**
