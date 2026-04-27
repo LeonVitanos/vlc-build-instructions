@@ -3,27 +3,26 @@
 
 Tested on Ubuntu 22.04 & 24.04 & 26.04
 
-**Qt**
+**Environment Setup**
 ------
-
-*   Required for running Qt installation file:
-    
-    *   `sudo apt install libxcb-cursor0 libxcb-cursor-dev`
-    *   If the installer fails to launch with a "platform plugin" error: `sudo apt install libxcb-xinerama0`
-    *   On Ubuntu 26.04 you also need: `sudo apt install libxkbcommon-x11-0 libxcb-cursor0 libxcb-icccm4 libxcb-image0 libxcb-keysyms1 libxcb-render-util0`
         
-*   Download Qt online installer: [https://download.qt.io/official\_releases/online\_installers/](https://download.qt.io/official_releases/online_installers/)
+*   Download **Qt online installer**: [https://download.qt.io/official\_releases/online\_installers/](https://download.qt.io/official_releases/online_installers/)
     
-    *   To be able to run the setup file, you will need to right click it -> Properties -> Permissions -> Enable 'Allow executing file as a program'
+    *   To be able to run the setup file, you will need to:
+        *    Right click it -> Properties -> Permissions -> Enable **Allow executing file as a program**
+        *   `sudo apt install libxcb-cursor0 libxcb-cursor-dev`
+        *   On **Ubuntu 26.04** you also need: `sudo apt install libxkbcommon-x11-0 libxcb-cursor0 libxcb-icccm4 libxcb-image0 libxcb-keysyms1 libxcb-render-util0`
+        *   If the installer fails to launch with a "platform plugin" error: `sudo apt install libxcb-xinerama0`  
         
+    *   Sign up/Login to your Qt account
     *   Select custom installation
         
-    *   Select to install for 6.x: the desktop gcc 64-bit and Qt Shader Tools
+    *   Select to install for 6.x: the **Desktop** and **Qt Shader Tools**
         
         *   the minimum supported version is 6.2.4
             
 *   Define the Qt Version you installed (so that you can copy paste all the commands that follow)
-    *   For example, run `QT_VER="6.10.2"`
+    *   For example, run `QT_VER="6.11.0"`
 *   Optional: Make sure the prefix of the files in `$HOME/Qt/$QT_VER/gcc_64/lib/pkgconfig/` are pointing at `$HOME/Qt/$QT_VER/gcc_64`:
 ```bash
 sed -i -e "s#prefix=/home/qt/work/install#prefix=$HOME/Qt/$QT_VER/gcc_64#" $HOME/Qt/$QT_VER/gcc_64/lib/pkgconfig/*.pc
