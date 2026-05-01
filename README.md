@@ -122,17 +122,33 @@ make -j4
     
 *   File -> New Project -> Import project -> Import existing project -> Change 'Location' to {YOUR\_HOME}/vlc
     
-    *   In 'File Selection' page it might be a good idea to:
-
-        *   Add *.qml; to the files matching selection
-     
-        *   Not include the `contrib`, `extras` and `build-qt11` folder as you don't need QtCreator to index them
+    *   In 'File Selection' page it might be better to not include the `contrib`, `extras` and `build-qt11` folder as you don't need QtCreator to index them
     *   Click Next -> Finish
-        
 *   Go to the 'Projects' page
     
-    *   Make sure the build environment is the Qt version you want to build with (e.g Desktop 6.10.2)
+    *   Make sure the build environment is the Qt version you want to build with (e.g Desktop 6.11.0)
         
     *   On the 'Build' page, change the build directory to {YOUR\_HOME}/vlc/build-qt11
         
     *   On the 'Run' page, change the executable to {YOUR\_HOME}/vlc/build-qt11/vlc
+*   Add qml files on Qt:
+```bash
+find . -type f -name "*.qml" > vlc.files
+```
+*   Exclude from git:
+```bash
+cat << EOF >> .git/info/exclude
+# Qt Creator Metadata
+vlc.creator
+vlc.files
+vlc.includes
+vlc.config
+vlc.cflags
+vlc.cxxflags
+*.user
+
+# Qt Creator Caches and Internal Folders
+.qtc_clangd/
+.qtcreator/
+EOF
+```
