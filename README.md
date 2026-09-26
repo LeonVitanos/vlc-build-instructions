@@ -1,4 +1,4 @@
-**Configure and build VLC from scratch**
+**Configure and build VLC 4.0 from scratch**
 ========================================
 
 Tested on Ubuntu 22.04 & 24.04 & 26.04
@@ -30,12 +30,6 @@ Tested on Ubuntu 22.04 & 24.04 & 26.04
 ```bash
 sed -i -e "s#prefix=/home/qt/work/install#prefix=$HOME/Qt/$QT_VER/gcc_64#" $HOME/Qt/$QT_VER/gcc_64/lib/pkgconfig/*.pc
 ```
-        
-*   Set Qt environment variables
-```bash
-export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:$HOME/Qt/$QT_VER/gcc_64/lib
-export PATH=$PATH:$HOME/Qt/$QT_VER/gcc_64/bin
-```
 
 ## Install Required Packages
 
@@ -65,6 +59,7 @@ sudo apt install libxcb-xkb-dev libxcb-damage0-dev libxkbcommon-x11-dev # Requir
 **Clone VLC**
 -------------
 
+*   `cd $HOME`
 *   `git clone https://code.videolan.org/videolan/vlc`
     
     *  Optional: To create your own fork `fork https://code.videolan.org/videolan/vlc`
@@ -86,7 +81,7 @@ sudo apt install libxcb-xkb-dev libxcb-damage0-dev libxkbcommon-x11-dev # Requir
 ```bash
 cd vlc/extras/tools
 ./bootstrap
-make -j4
+make -j$(nproc)
 ```  
 
 **Build VLC contrib**
@@ -96,7 +91,7 @@ cd ../../contrib
 mkdir contrib-nativ
 cd contrib-nativ
 ../bootstrap --disable-gcrypt --disable-bluray
-make -j4
+make -j$(nproc)
 ```
 
 **Build VLC**
@@ -106,13 +101,19 @@ cd ../..
 ./bootstrap
 mkdir build-qt11
 cd build-qt11
+
+PATH="$HOME/Qt/$QT_VER/gcc_64/bin:$PATH" \
+LD_LIBRARY_PATH="$HOME/Qt/$QT_VER/gcc_64/lib" \
 ../configure --disable-optimizations --enable-debug --disable-nls \
 --without-kde-solid --enable-qt-qml-cache --enable-qt-qml-debug \
 --disable-skins2 --disable-upnp --disable-chromecast --disable-srt \
 --disable-aom --disable-bluray \
 CFLAGS="-ggdb -O0 -fno-omit-frame-pointer" \
 PKG_CONFIG_PATH="$HOME/Qt/$QT_VER/gcc_64/lib/pkgconfig/:$HOME/vlc/contrib/x86_64-linux-gnu/lib/pkgconfig/"
-make -j4
+
+PATH="$HOME/Qt/$QT_VER/gcc_64/bin:$PATH" \
+LD_LIBRARY_PATH="$HOME/Qt/$QT_VER/gcc_64/lib" \
+make -j$(nproc)
 ```  
 
 **Configure Qt Creator Project**
@@ -133,6 +134,7 @@ make -j4
     *   On the 'Run' page, change the executable to {YOUR\_HOME}/vlc/build-qt11/vlc
 *   Add qml files on Qt:
 ```bash
+cd $HOME/vlc
 find . -type f -name "*.qml" > vlc.files
 ```
 *   Exclude from git:
