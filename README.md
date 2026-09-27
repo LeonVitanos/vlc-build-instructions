@@ -67,10 +67,10 @@ sudo apt install libxcb-xkb-dev libxcb-damage0-dev libxkbcommon-x11-dev # Requir
         
 *   Optional: Connecting to GitLab with SSH
     
-    *   Generate rsa: `ssh-keygen -t rsa -b 2048 -C "{YOUR\_EMAIL}"`
-        
-    *   Upload `{YOUR\_HOME}/.ssh/id\_rsa.pub` to code.videolan.org
-        
+    *   Generate a key: `ssh-keygen -t rsa -b 2048 -C "YOUR EMAIL"`
+    *   Print the public key and copy the whole line. It starts with ssh-rsa: `cat ~/.ssh/id_rsa.pub`
+    *   Paste that line into code.videolan.org → Preferences → SSH Keys: https://code.videolan.org/-/user_settings/ssh_keys
+    *   Point your fork remote at SSH: `git remote set-url leon git@code.videolan.org:YOUR_USERNAME/vlc.git`
     *   For more information read: https://docs.github.com/en/authentication/connecting-to-github-with-ssh
         
 
