@@ -135,7 +135,7 @@ make -j$(nproc)
 *   Add qml files on Qt:
 ```bash
 cd $HOME/vlc
-find . -type f -name "*.qml" > vlc.files
+find . -type f -name "*.qml" >> vlc.files
 ```
 *   Exclude from git:
 ```bash
