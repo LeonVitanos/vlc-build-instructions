@@ -144,9 +144,10 @@ Then import and configure the project:
     
     *   Make sure the build environment is the Qt version you want to build with (e.g Desktop 6.12.0)
         
-    *   On the 'Build' page, change the build directory to {YOUR\_HOME}/vlc/build-qt11
+    *   On the 'Build' page, change the build directory to `%{Env:HOME}/vlc/build-qt11`
         
-    *   On the 'Run' page, change the executable to {YOUR\_HOME}/vlc/build-qt11/vlc
+    *   On the 'Run' page, change the executable to `%{Env:HOME}/vlc/build-qt11/vlc`
+
 *   Add qml files on Qt:
 ```bash
 cd $HOME/vlc
