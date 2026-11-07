@@ -1,7 +1,10 @@
-**Configure and build VLC 4.0 from scratch**
+**Configure and build VLC 4.0 on Linux from scratch**
 ========================================
 
-Tested on Ubuntu 22.04 & 24.04 & 26.04
+Tested on
+* Ubuntu 22.04
+* Ubuntu 24.04
+* Ubuntu 26.04
 
 **Environment Setup**
 ------
@@ -23,13 +26,7 @@ Tested on Ubuntu 22.04 & 24.04 & 26.04
          *   the minimum supported version is 6.2.4
             
 *   Define the Qt Version you installed (so that you can copy paste all the commands that follow)
-    *   For example, run `QT_VER="6.11.0"`
-*   Verify and Fix Library Paths:
-    * `grep "^prefix=" $HOME/Qt/$QT_VER/gcc_64/lib/pkgconfig/Qt6Core.pc`
-    * If it is `/home/qt/work/install` run: 
-```bash
-sed -i -e "s#prefix=/home/qt/work/install#prefix=$HOME/Qt/$QT_VER/gcc_64#" $HOME/Qt/$QT_VER/gcc_64/lib/pkgconfig/*.pc
-```
+    *   For example, run `QT_VER="6.12.0"`
 
 ## Install Required Packages
 
@@ -71,10 +68,7 @@ sudo apt install libxcb-xkb-dev libxcb-damage0-dev libxkbcommon-x11-dev # Requir
     *   Print the public key and copy the whole line. It starts with ssh-rsa: `cat ~/.ssh/id_rsa.pub`
     *   Paste that line into code.videolan.org → Preferences → SSH Keys: https://code.videolan.org/-/user_settings/ssh_keys
     *   Point your fork remote at SSH: `git remote set-url leon git@code.videolan.org:YOUR_USERNAME/vlc.git`
-    *   For more information read: https://docs.github.com/en/authentication/connecting-to-github-with-ssh
-        
-
-        
+    *   For more information read: https://docs.github.com/en/authentication/connecting-to-github-with-ssh      
 
 **Build VLC tools**
 -------------------
@@ -119,26 +113,10 @@ make -j$(nproc)
 **Configure Qt Creator Project**
 --------------------
 
-*   Open Qt Creator
-    
-*   File -> New Project -> Import project -> Import existing project -> Change 'Location' to {YOUR\_HOME}/vlc
-    
-    *   In 'File Selection' page it might be better to not include the `contrib`, `extras` and `build-qt11` folder as you don't need QtCreator to index them
-    *   Click Next -> Finish
-*   Go to the 'Projects' page
-    
-    *   Make sure the build environment is the Qt version you want to build with (e.g Desktop 6.11.0)
-        
-    *   On the 'Build' page, change the build directory to {YOUR\_HOME}/vlc/build-qt11
-        
-    *   On the 'Run' page, change the executable to {YOUR\_HOME}/vlc/build-qt11/vlc
-*   Add qml files on Qt:
+Exclude the Qt Creator files from this clone before importing the project:
+
 ```bash
 cd $HOME/vlc
-find . -type f -name "*.qml" >> vlc.files
-```
-*   Exclude from git:
-```bash
 cat << EOF >> .git/info/exclude
 # Qt Creator Metadata
 vlc.creator
@@ -148,9 +126,29 @@ vlc.config
 vlc.cflags
 vlc.cxxflags
 *.user
-
 # Qt Creator Caches and Internal Folders
 .qtc_clangd/
 .qtcreator/
 EOF
+```
+
+Then import and configure the project:
+
+*   Open Qt Creator
+    
+*   File -> New Project -> Import project -> Import existing project -> Change 'Location' to {YOUR\_HOME}/vlc
+    
+    *   In 'File Selection' page it might be better to not include the `contrib`, `extras` and `build-qt11` folder as you don't need QtCreator to index them
+    *   Click Next -> Finish
+*   Go to the 'Projects' page
+    
+    *   Make sure the build environment is the Qt version you want to build with (e.g Desktop 6.12.0)
+        
+    *   On the 'Build' page, change the build directory to {YOUR\_HOME}/vlc/build-qt11
+        
+    *   On the 'Run' page, change the executable to {YOUR\_HOME}/vlc/build-qt11/vlc
+*   Add qml files on Qt:
+```bash
+cd $HOME/vlc
+find . -type f -name "*.qml" >> vlc.files
 ```
